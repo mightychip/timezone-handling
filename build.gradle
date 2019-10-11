@@ -1,3 +1,6 @@
+import net.researchgate.release.GitAdapter
+import java.util.regex.Matcher
+
 plugins {
     id 'org.springframework.boot' version '2.1.7.RELEASE'
     id 'io.spring.dependency-management' version '1.0.7.RELEASE'
@@ -15,12 +18,14 @@ configurations {
 }
 
 release {
-    scmAdapters = [
-            net.researchgate.release.GitAdapter
-    ]
+    scmAdapters = [GitAdapter]
 
     git {
         requireBranch = 'release-test'
+    }
+
+    beforeReleaseBuild {
+        print(version.toString())
     }
 }
 

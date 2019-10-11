@@ -18,6 +18,7 @@ configurations {
 }
 
 release {
+    failOnCommitNeeded = false
     scmAdapters = [GitAdapter]
 
     git {
@@ -25,7 +26,9 @@ release {
     }
 
     beforeReleaseBuild {
-        print(version.toString())
+        oldVersion = version.toString().replace("-SNAPSHOT", "")
+        print("Releasing this version: " + version.toString().replace("-SNAPSHOT", ""))
+        print("Old version now: " + oldVersion.toString())
     }
 }
 

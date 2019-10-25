@@ -30,6 +30,12 @@ release {
         print("Releasing this version: " + version.toString().replace("-SNAPSHOT", ""))
         print("Old version now: " + oldVersion.toString())
     }
+
+    afterReleaseBuild {
+        oldVersion = version.toString().replace("-SNAPSHOT", "")
+        print("Releasing this version: " + version.toString().replace("-SNAPSHOT", ""))
+        print("Old version now: " + oldVersion.toString())
+    }
 }
 
 repositories {
